@@ -14,14 +14,14 @@
 
       in {
         devShell = pkgs.devshell.mkShell {
-          motd = "\n  Welcome to the {2}oxide{reset} dev shell. Run {1}menu{reset} for commands.\n";
+          motd = "\n  Welcome to the {2}sg_personal_week{reset} dev shell. Run {1}menu{reset} for commands.\n";
           packages = with pkgs; [
             typst  typst-lsp
           ];
           commands = [
             {
               name = "watch";
-              command = "mkdir /tmp/ozone-output -p && typst watch src/$1 /tmp/ozone-output/out.pdf";
+              command = "mkdir /tmp/typst-output -p && typst watch src/main.typ /tmp/typst-output/out.pdf";
               help = "Run typst in watch mode on a file";
             }
           ];
