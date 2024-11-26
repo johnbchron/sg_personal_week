@@ -21,7 +21,7 @@
           commands = [
             {
               name = "watch";
-              command = "mkdir /tmp/typst-output -p && typst watch src/main.typ /tmp/typst-output/out.pdf";
+              command = "typst watch src/main.typ ./out.pdf";
               help = "Run typst in watch mode on a file";
             }
           ];

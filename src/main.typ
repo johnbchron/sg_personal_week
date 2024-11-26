@@ -1,5 +1,5 @@
 
-#set page(paper: "a4", flipped: true, margin: 1cm)
+#set page(paper: "a4", margin: 1cm)
 #set text(font: "DejaVu Sans Mono", size: 8.5pt)
 
 #let columns = ("Time", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday")
@@ -41,48 +41,70 @@
   )
 }
 
+// blocks on days
+#let m_block = (color, start_hour, end_hour, content) => block(color, start_hour, end_hour, 0, content)
+#let t_block = (color, start_hour, end_hour, content) => block(color, start_hour, end_hour, 1, content)
+#let w_block = (color, start_hour, end_hour, content) => block(color, start_hour, end_hour, 2, content)
+#let th_block = (color, start_hour, end_hour, content) => block(color, start_hour, end_hour, 3, content)
+#let f_block = (color, start_hour, end_hour, content) => block(color, start_hour, end_hour, 4, content)
+
+#let god_time = red;
+#let work = green;
+#let c_work = blue;
+#let personal = orange;
+#let food = purple;
+#let community = yellow;
+
 #let event_cells = (
-  ..range(0, 5).map(day => block(red, 5, 7, day, "Prayer")),
-  ..range(0, 5).map(day => block(orange, 7, 8, day, "Preparing for the day")),
-  ..(("Worship", "Prayer", "Intercession", "Devotional", "Worship").enumerate().map(e => {
-    let day = e.at(0)
-    let event = e.at(1)
-    block(red, 8, 9, day, event)
-  })),
+  m_block(god_time, 5, 7, "Prayer"),
+  m_block(personal, 7, 8, "Preparing for the day"),
+  m_block(god_time, 8, 9, "Worship"),
+  m_block(personal, 9, 10.5, "Personal Study"),
+  m_block(work, 10.5, 13.5, "Professional Work"),
+  m_block(food, 13.5, 14.5, "Lunch"),
+  m_block(work, 14.5, 16.5, "Professional Work"),
+  m_block(personal, 16.5, 17.5, "Personal Study"),
+  m_block(food, 17.5, 18, "Dinner"),
+  m_block(community, 18, 20, "Solid Ground Meeting"),
 
-  ..((0, 2, 4).map(day => {(
-    // block(green, 9, 13.5, day, "Professional\nWork"),
-    block(purple, 13.5, 14.5, day, "Lunch"),
-    block(green, 14.5, 16.5, day, "Professional\nWork"),
-  )}).flatten()),
-  block(orange, 9, 10.5, 0, "Personal\nStudy"),
-  block(green, 10.5, 13.5, 0, "Professional\nWork"),
-  block(green, 9, 13.5, 2, "Professional\nWork"),
-  block(green, 9, 13.5, 4, "Professional\nWork"),
-  ..((1, 3).map(day => {(
-    block(blue, 9, 12.5, day, "Farm\nWork"),
-    block(purple, 12.5, 13.5, day, "Lunch"),
-    block(blue, 13.5, 15, day, "Farm\nWork"),
-  )}).flatten()),
-  block(orange, 15, 16.5, 1, "Personal\nStudy"),
+  t_block(god_time, 5, 7, "Prayer"),
+  t_block(personal, 7, 8, "Preparing for the day"),
+  t_block(god_time, 8, 9, "Prayer"),
+  t_block(c_work, 9, 12.5, "Farm Work"),
+  t_block(food, 12.5, 13.5, "Lunch"),
+  t_block(c_work, 13.5, 15, "Farm Work"),
+  t_block(personal, 15, 16.5, "Personal Study"),
+  t_block(c_work, 16.5, 18.5, "Cooking for the Community Dinner"),
+  t_block(community, 18.5, 20, "Community Dinner"),
+  
+  w_block(god_time, 5, 7, "Prayer"),
+  w_block(personal, 7, 8, "Preparing for the day"),
+  w_block(god_time, 8, 9, "Intercession"),
+  w_block(work, 9, 13.5, "Professional Work"),
+  w_block(food, 13.5, 14.5, "Lunch"),
+  w_block(work, 14.5, 16.5, "Professional Work"),
+  w_block(personal, 16.5, 18.5, "Personal Study"),
+  w_block(community, 18.5, 20, "Community Dinner"),
 
-  block(orange, 16.5, 17.5, 0, "Personal\nStudy"),
-  block(purple, 17.5, 18, 0, "Dinner"),
-  block(yellow, 18, 20, 0, "Solid Ground\nMeeting"),
+  th_block(red, 5, 7, "Prayer"),
+  th_block(orange, 7, 8, "Preparing for the day"),
+  th_block(red, 8, 9, "Devotional"),
+  th_block(c_work, 9, 12.5, "Farm Work"),
+  th_block(food, 12.5, 13.5, "Lunch"),
+  th_block(c_work, 13.5, 15, "Farm Work"),
+  th_block(personal, 15, 17.5, "Personal Study"),
+  th_block(c_work, 17.5, 18.5, "Preparing for Housechurch"),
+  th_block(community, 18.5, 21, "Housechurch"),
 
-  block(blue, 16.5, 18.5, 1, "Cooking for the\nCommunity Dinner"),
-  block(yellow, 18.5, 20, 1, "Community\nDinner"),
-
-  block(orange, 16.5, 18.5, 2, "Personal\nStudy"),
-  block(yellow, 18.5, 20, 2, "Community\nDinner"),
-
-  block(orange, 15, 17.5, 3, "Personal\nStudy"),
-  block(blue, 17.5, 18.5, 3, "Preparing for\nHousechurch"),
-  block(red, 18.5, 21, 3, "Housechurch"),
-
-  block(orange, 16.5, 18, 4, "Personal\nStudy"),
-  block(purple, 18, 18.5, 4, "Dinner"),
-  block(white, 18.5, 20, 4, "Free Time"),
+  f_block(red, 5, 7, "Prayer"),
+  f_block(orange, 7, 8, "Preparing for the day"),
+  f_block(red, 8, 9, "Worship"),
+  f_block(work, 9, 13.5, "Professional Work"),
+  f_block(food, 13.5, 14.5, "Lunch"),
+  f_block(work, 14.5, 16.5, "Professional Work"),
+  f_block(personal, 16.5, 18, "Personal Study"),
+  f_block(food, 18, 18.5, "Dinner"),
+  f_block(white, 18.5, 20, "Free Time"),
 )
 
 #table(
