@@ -54,6 +54,7 @@
 #let personal = orange;
 #let food = purple;
 #let community = yellow;
+#let free = white;
 
 #let event_cells = (
   m_block(god_time, 5, 7, "Prayer"),
@@ -63,17 +64,17 @@
   m_block(work, 10.5, 13.5, "Professional Work"),
   m_block(food, 13.5, 14.5, "Lunch"),
   m_block(work, 14.5, 16.5, "Professional Work"),
-  m_block(personal, 16.5, 17.5, "Personal Study"),
+  m_block(free, 16.5, 17.5, "Free Time"),
   m_block(food, 17.5, 18, "Dinner"),
   m_block(community, 18, 20, "Solid Ground Meeting"),
 
   t_block(god_time, 5, 7, "Prayer"),
   t_block(personal, 7, 8, "Preparing for the day"),
   t_block(god_time, 8, 9, "Prayer"),
-  t_block(c_work, 9, 12.5, "Farm Work"),
+  t_block(c_work, 9, 12.5, "Solid Ground Work"),
   t_block(food, 12.5, 13.5, "Lunch"),
-  t_block(c_work, 13.5, 15, "Farm Work"),
-  t_block(personal, 15, 16.5, "Personal Study"),
+  t_block(c_work, 13.5, 15, "Solid Ground Work"),
+  t_block(personal, 15, 16.5, "Personal / Group Study"),
   t_block(c_work, 16.5, 18.5, "Cooking for the Community Dinner"),
   t_block(community, 18.5, 20, "Community Dinner"),
   
@@ -83,15 +84,15 @@
   w_block(work, 9, 13.5, "Professional Work"),
   w_block(food, 13.5, 14.5, "Lunch"),
   w_block(work, 14.5, 16.5, "Professional Work"),
-  w_block(personal, 16.5, 18.5, "Personal Study"),
+  w_block(free, 16.5, 18.5, "Free Time"),
   w_block(community, 18.5, 20, "Community Dinner"),
 
   th_block(red, 5, 7, "Prayer"),
   th_block(orange, 7, 8, "Preparing for the day"),
   th_block(red, 8, 9, "Devotional"),
-  th_block(c_work, 9, 12.5, "Farm Work"),
+  th_block(c_work, 9, 12.5, "Solid Ground Work"),
   th_block(food, 12.5, 13.5, "Lunch"),
-  th_block(c_work, 13.5, 15, "Farm Work"),
+  th_block(c_work, 13.5, 15, "Solid Ground Work"),
   th_block(personal, 15, 17.5, "Personal Study"),
   th_block(c_work, 17.5, 18.5, "Preparing for Housechurch"),
   th_block(community, 18.5, 21, "Housechurch"),
@@ -102,7 +103,7 @@
   f_block(work, 9, 13.5, "Professional Work"),
   f_block(food, 13.5, 14.5, "Lunch"),
   f_block(work, 14.5, 16.5, "Professional Work"),
-  f_block(personal, 16.5, 18, "Personal Study"),
+  f_block(community, 16.5, 18, "Small Groups"),
   f_block(food, 18, 18.5, "Dinner"),
   f_block(white, 18.5, 20, "Free Time"),
 )
